@@ -8,9 +8,9 @@ const PORT = process.env.PORT
 const server = express();
 connect();
 
-const routerUsers = require("./api/routers/users.routes");
-const routerOffers = require("./api/routers/offers.routes");
-const routerCandidates = require("./api/routers/candidates.routes");
+const routerTask = require("./api/./routers/task.router")
+
+
 
 server.use(cors({
     origin: ["http://localhost:3000", "http://localhost:4200", "http://nombre.vercel.com", "http://127.0.0.1:5500"],
@@ -21,11 +21,10 @@ server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
 // Rutas
-server.use("/users", routerUsers);
-server.use("/offers", routerOffers);
-server.use("/candidates", routerCandidates);
+
+server.use("/task", routerTask);
 server.get("/", (req, res) => {
-    res.status(200).json({ message: "Bienvenidos a Meettalent" });
+    res.status(200).json({ message: "Bienvenidos a EscapeUp" });
 });
 
 server.listen(PORT, () => console.log(`listening on: http://localhost:${PORT}`));
